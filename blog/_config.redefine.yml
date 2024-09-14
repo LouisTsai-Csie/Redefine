@@ -342,7 +342,7 @@ comment:
       clientSecret: d843095576944b3aed21b9bdf408c09c65d39047
       repo: GitTalk
       owner: LouisTsai-Csie
-      proxy: # GitHub repository proxy
+      # proxy: # GitHub repository proxy
     # Twikoo comment system. See https://twikoo.js.org/
     twikoo:
       version: 1.6.10 # Twikoo version, do not modify if you dont know what it is

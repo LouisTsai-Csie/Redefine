@@ -153,3 +153,6 @@ Run the test, and you'll see that we can increase the token balance to over `1,0
 
 This vulnerability lies in the `clones-with-immutable-args` library. Perhaps I can dive deeper into this pattern in my next blog post.
 
+### Reference
+
+[1] Fuzzland Writeup: https://github.com/fuzzland/writeup/blob/master/paradigm.md#dai

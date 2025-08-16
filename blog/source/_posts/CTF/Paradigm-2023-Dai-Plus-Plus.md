@@ -4,19 +4,19 @@ date: 2024-09-14 13:08:14
 tags:
 ---
 
-### Introduction
+### 0x00. Introduction
 
-As part of the `Web3 CTF Intensive Co-learning` with DeFiHackLabs, I solved multiple CTF challenges, including those from Paradigm CTF, BlazCTF, and more. In this post, I’ll share my experience solving the DAI Plus Plus challenge, which was interesting and I learned a lot.
+As part of the `Web3 CTF Intensive Co-learning` with DeFiHackLabs, I solved multiple CTF challenges, including those from Paradigm CTF, BlazCTF, and more. In this post, I'll share my experience solving the DAI Plus Plus challenge, which was interesting and I learned a lot.
 
 Paradigm CTF 2023 DAI Plus Plus Challenge Link: https://github.com/paradigmxyz/paradigm-ctf-2023/tree/main/dai-plus-plus
 
-### Challenge Overview
+### 0x01. Challenge Overview
 
 In the `Challenge.sol` function, a `SystemConfiguration` variable is created, and our goal is to mint more than `1,000,000,000,000 ether` of stable coins.
 
 There are four contracts in this challenge: `SystemConfiguration`, `Stablecoin`, `AccountManager`, and `Account`.
 
-Let’s first take a look at the `SystemConfiguration` file, which contains all the administrative operations, managing the `accountImplementation`, `ethUsdPriceFeed`, `accountManager`, `stablecoin`, `collateralRatio`, and `_systemContracts`. The owner, configured during the construction phase, can update these variables, while ordinary users can only view them through the getter functions.
+Let's first take a look at the `SystemConfiguration` file, which contains all the administrative operations, managing the `accountImplementation`, `ethUsdPriceFeed`, `accountManager`, `stablecoin`, `collateralRatio`, and `_systemContracts`. The owner, configured during the construction phase, can update these variables, while ordinary users can only view them through the getter functions.
 
 In the `Stablecoin.sol` file, the `Stablecoin` contract is an ERC-20 token that includes `mint` and `burn` operations. These operations can only be performed if the `SystemConfiguration` account specified in the contract authorizes the operation for the `msg.sender`.
 
@@ -26,7 +26,7 @@ Finally, there is the `Account` contract. For every operation in `AccountManager
 
 Alright, do you notice anything unusal in the contract?
 
-### Vulnerability Analysis
+### 0x02. Vulnerability Analysis
 
 **Health Factor**
 
@@ -43,7 +43,7 @@ You can check the details here:
 (1) Chainlink Oracle Security Considerations: https://medium.com/cyfrin/chainlink-oracle-defi-attacks-93b6cb6541bf#99af
 (2) How Chainlink Price Feeds Work: https://www.rareskills.io/post/chainlink-price-feed-contract
 
-Now, let’s move on to the return statement. This part seems interesting:
+Now, let's move on to the return statement. This part seems interesting:
 
 ```C
 totalBalance * ethPrice / 1e8 >= totalDebt * configuration.getCollateralRatio() / 10000
@@ -149,10 +149,10 @@ function testDAIPlusPlus() public {
 
 Run the test, and you'll see that we can increase the token balance to over `1,000,000,000,000 ether`, successfully passing this challenge.
 
-### Closing
+### 0x03. Closing
 
 This vulnerability lies in the `clones-with-immutable-args` library. Perhaps I can dive deeper into this pattern in my next blog post.
 
-### Reference
+### 0x04. Reference
 
 [1] Fuzzland Writeup: https://github.com/fuzzland/writeup/blob/master/paradigm.md#dai

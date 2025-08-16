@@ -4,7 +4,7 @@ date: 2024-09-25 16:48:17
 tags:
 ---
 
-### Introduction
+### 0x00. Introduction
 
 Hi, this is my second article for the BlazCTF 2024 challenge writeup, and today I will breakdown the `Tutori4l` challenge. It is under `Solidity` and `DeFi` category and related to Uniswap V4. There are 21 teams solved this challenge during the contest.
 
@@ -12,7 +12,7 @@ BlazCTF 2024 Tutori4l Challenge Link: https://github.com/fuzzland/blazctf-2024/t
 
 As usual, let's first check out the deployment script to understand the environment setting for this challenge.
 
-### Overview
+### 0x01. Overview
 
 There are several addresses in the deployment script: `player`, `PoolManager` and `challenge `, after the setting, both the `player` and `challenge` account will have 1 ether.
 
@@ -80,4 +80,4 @@ It then initialize the pool through the pool manager, passing the `PoolKey`, a s
 
 The starting price is represented by the Q-notation, it represents the 
 
-### Change
+### 0x02. Change

@@ -4,15 +4,15 @@ date: 2024-09-24 15:58:20
 tags:
 ---
 
-### Introduction
+### 0x00. Introduction
 
 This is the first article for the BlazCTF 2024 challenge writeup. The challenge is titled `Cyber Cartel`, under the `Solidity` category. During the competition, 35 teams solved this challenge.
 
 BlazCTF 2024 Cyber Cartel Challenge Link: https://github.com/fuzzland/blazctf-2024/tree/main/cyber-cartel
 
-First, let’s check out the setup for the challenge by navigating to `cyber-cartel/project/script/Deploy.s.sol`.
+First, let's check out the setup for the challenge by navigating to `cyber-cartel/project/script/Deploy.s.sol`.
 
-### Overview
+### 0x01. Overview
 
 In the deployment script, the deployer creates the `CartelTreasury` contract and three guardian addresses, passing these values as parameters to the `BodyGuard` contract. Then, the `bodyguard` is passed to the `CartelTreasury::initialize` function. Finally, the `cartel` is passed into the challenge contract, and by checking the contract’s constructor, we can see that the address is set to the `TREASURY`.
 
@@ -28,7 +28,7 @@ So, the relation among these three challenge now is as follows:
 
 ![Cyber Cartel Challenge Configuration](../../images/CTF/BlazCTF-2024-Cyber-Cartel/Cyber-Cartel-Challenge-Configuration.png)
 
-### CartelTreasury
+### 0x02. CartelTreasury
 
 How can we stole all the ether from the `cartel` contract? We can checkout all the ether transfer related function in the `cartel` contract first.
 
@@ -47,7 +47,7 @@ Can we bypass the restriction by setting the `CartelTreasury::bodyGuard` address
 
 The only way to interact with the `cartel` contract is through the `bodyGuard` contract. Now, let's focus on the `BodyGuard` contract.
 
-### BodyGuard
+### 0x03. BodyGuard
 
 The `BodyGuard` contract functions like a multisig wallet, where users can propose actions, collect the required signatures, and then call `BodyGuard::propose` to execute the action. From the deployment script, we know that there are 3 guardians, or signers, for this multisig wallet.
 
@@ -55,7 +55,7 @@ I checked whether the private keys for these guardian addresses could be found o
 
 Unfortunately, we couldn’t find what we were looking for, so we still need to break down the contract.
 
-#### `BodyGuard::propose`
+#### 0x04. `BodyGuard::propose`
 
 The function first checks the `expiredAt` timestamp to ensure the proposal hasn’t expired and the `nonce` value to prevent signature replay issue. It then verifies if the caller is one of the signers. Since we have the player's private key and the player is one of the guardians, we only need to submit two signatures here.
 
@@ -70,14 +70,14 @@ Next, the function verifies if the number of signatures meets the required `Body
 
 The latter part of the contract seems straightforward. Here, we can interact with the `cartel` contract and craft calldata to invoke the `CartelTreasury::gistCartelDismiss` function, and then we can call `CartelTreasury::doom` to drain all the funds.
 
-#### `BodyGuard::validateSignatures`
+#### 0x05. `BodyGuard::validateSignatures`
 
 However, the earlier part of the contract raises concerns. Can we submit duplicate signatures, since the function only checks if the number of signatures is sufficient? In the `BodyGuard::validateSignatures` function, it recovers the signatures, hashes them, and compares the local variable `signHash` to ensure no duplicates.
 
 
 This is a common pattern to prevent duplicate values in an array — if a duplicate signature is submitted, it will generate the same signature hash, and the value will not be greater than the previous `signHash`.
 
-#### `BodyGuard::recoverSigner`
+#### 0x06. `BodyGuard::recoverSigner`
 
 Alright, for the next function, it seems particularly weird:
 
@@ -166,7 +166,7 @@ uint256 sigHash0 = uint256(keccak256(sig0));
 uint256 sigHash1 = uint256(keccak256(sig1));
 ```
 
-### Solution
+### 0x07. Solution
 
 To summarize, we can follow these steps to solve this challenge:
 
@@ -268,7 +268,7 @@ contract SolutionScript is Script {
 ```
 Now we've drained all the ether from the `cartel`. Well done! We've successfully solved a challenge in BlazCTF 2024!
 
-### Closing
+### 0x08. Closing
 
 When using `ECDSA` signatures, several security concerns should be considered, including:
 

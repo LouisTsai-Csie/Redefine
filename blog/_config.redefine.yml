@@ -195,13 +195,18 @@ navbar:
     # Status: 
     #   path: https://status.ohevan.com/
     #   icon: fa-regular fa-chart-bar
-    # About: 
-    #   icon: fa-regular fa-user
-    #   submenus:
-    #     Me: /about
-    #     Github: https://github.com/EvanNotFound/hexo-theme-redefine
-    #     Blog: https://ohevan.com
-    #     Friends: /friends
+    Categories:
+      icon: fa-regular fa-folder
+      submenus:
+        CTF: /categories/CTF
+        Postmortem: /categories/Postmortem
+        Research: /categories/Research
+    About: 
+      icon: fa-regular fa-user
+      submenus:
+        Me: https://bento.me/louistsai
+        Github: https://github.com/LouisTsai-Csie
+        # Friends: /friends
     # Links: 
     #   icon: fa-regular fa-link
     #   submenus:
@@ -235,9 +240,9 @@ home:
       # Tags: 
       #   path: /tags 
       #   icon: fa-regular fa-tags # can be empty
-      # Categories: 
-      #   path: /categories 
-      #   icon: fa-regular fa-folder # can be empty
+      Categories: 
+        path: /categories 
+        icon: fa-regular fa-folder # can be empty
       # ...... # you can add more
   # Article date format
   article_date_format: auto # auto, relative, YYYY-MM-DD, YYYY-MM-DD HH:mm:ss etc.

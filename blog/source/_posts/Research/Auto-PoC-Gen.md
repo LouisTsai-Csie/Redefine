@@ -1,7 +1,10 @@
 ---
 title: Automatic Attack Incident Proof-of-concept Generator
 date: 2024-12-09 08:58:21
-tags: Research
+category: Research
+tags:
+  - Research
+  - Security
 ---
 
 ### Background

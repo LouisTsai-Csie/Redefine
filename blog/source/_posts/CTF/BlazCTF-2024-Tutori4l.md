@@ -1,7 +1,11 @@
 ---
 title: BlazCTF 2024 Tutori4l
 date: 2024-09-25 16:48:17
+category: CTF
 tags:
+  - CTF
+  - DeFi
+  - Solidity
 ---
 
 ### 0x00. Introduction

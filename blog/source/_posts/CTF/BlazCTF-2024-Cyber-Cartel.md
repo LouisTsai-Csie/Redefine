@@ -1,7 +1,11 @@
 ---
 title: BlazCTF 2024 Cyber Cartel
 date: 2024-09-24 15:58:20
+category: CTF
 tags:
+  - CTF
+  - Solidity
+  - DeFi
 ---
 
 ### 0x00. Introduction

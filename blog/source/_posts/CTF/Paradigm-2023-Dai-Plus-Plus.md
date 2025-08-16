@@ -1,7 +1,11 @@
 ---
 title: Paradigm 2023 DAI Plus Plus
 date: 2024-09-14 13:08:14
+category: CTF
 tags:
+  - CTF
+  - DeFi
+  - Solidity
 ---
 
 ### 0x00. Introduction

@@ -312,7 +312,7 @@ articles:
     # Whether to enable article recommendation
     enable: true
     # Article recommendation title
-    title: 推薦閱讀
+    title: Recommendation
     # Max number of articles to display
     limit: 3
     # Max number of articles to display mobile

@@ -126,3 +126,35 @@ responsive_images:
   # Generate original formats alongside optimized ones
   generate_srcset: true
   lazy_loading: true
+
+# Minification
+html_minifier:
+  enable: true
+  ignore_error: false
+  exclude:
+    - '*.min.html'
+  silent: false
+  options:
+    removeComments: true
+    collapseWhitespace: true
+    removeAttributeQuotes: false
+    removeEmptyAttributes: true
+    minifyJS: true
+    minifyCSS: true
+
+clean_css:
+  enable: true
+  exclude:
+    - '*.min.css'
+  silent: false
+  options:
+    compatibility: 'ie8'
+    level: 2
+    inline: ['local']
+
+uglify:
+  mangle: true
+  output:
+  compress:
+  exclude:
+    - '*.min.js'

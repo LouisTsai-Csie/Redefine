@@ -394,11 +394,18 @@ footer:
 # Docs: https://redefine-docs.ohevan.com/inject
 inject:
   # Whether to enable inject
-  enable: false
+  enable: true
   # Inject custom head html code
-  head: 
-    -
-    -
+  head:
+    - <link rel="preconnect" href="https://fonts.googleapis.com">
+    - <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    - <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+    - <link rel="dns-prefetch" href="//unpkg.com">
+    - <link rel="dns-prefetch" href="//www.google-analytics.com">
+    - <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    - <meta name="theme-color" content="#A31F34">
+    - <link rel="preload" href="/css/style.css" as="style">
+    - <link rel="preload" href="/js/main.js" as="script">
   # Inject custom footer html code
   footer:
     -
@@ -449,7 +456,7 @@ page_templates:
 # Docs: https://redefine-docs.ohevan.com/cdn
 cdn:
   # Whether to enable CDN
-  enable: false
+  enable: true
   # CDN Provider
   provider: npmmirror # npmmirror, zstatic, sustech, staticfile, bootcdn, cdnjs, jsdelivr, unpkg, custom
   # Custom CDN URL

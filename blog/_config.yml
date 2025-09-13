@@ -146,6 +146,13 @@ robotstxt:
     - /images/
   sitemap: https://louistsai.com/sitemap.xml
 
+# Search Database
+search:
+  path: search.xml
+  field: post
+  content: true
+  format: html
+
 # Minification
 html_minifier:
   enable: true

@@ -127,6 +127,25 @@ responsive_images:
   generate_srcset: true
   lazy_loading: true
 
+# Sitemap
+sitemap:
+  path: sitemap.xml
+  rel: false
+  tags: true
+  categories: true
+
+# Robots.txt
+robotstxt:
+  useragent: "*"
+  disallow:
+    - /js/
+    - /css/
+    - /fonts/
+    - /images/loading.svg
+  allow:
+    - /images/
+  sitemap: https://louistsai.com/sitemap.xml
+
 # Minification
 html_minifier:
   enable: true

@@ -5,6 +5,8 @@ category: Research
 tags:
   - Research
   - Security
+# thumbnail: /images/Research/Auto-PoC-Gen/PoC-Gen-Workflow.png
+# description: "Automated tool for generating proof-of-concept exploits from blockchain attack incidents using transaction analysis."
 ---
 
 ### Background

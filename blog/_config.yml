@@ -11,6 +11,12 @@ author: Louis Tsai
 language: en
 timezone: ''
 
+# OpenGraph and Social Media Meta Tags
+## Default site image for social sharing
+default_og_image: /images/preview.png
+## Twitter username
+twitter: 0xlouistsai
+
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: https://louistsai.com

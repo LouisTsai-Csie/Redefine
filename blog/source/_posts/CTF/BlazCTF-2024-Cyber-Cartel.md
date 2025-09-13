@@ -6,6 +6,8 @@ tags:
   - CTF
   - Solidity
   - DeFi
+# thumbnail: /images/CTF/BlazCTF-2024-Cyber-Cartel/Cyber-Cartel-Challenge-Configuration.png
+# description: "BlazCTF 2024 Cyber Cartel challenge writeup - a Solidity-based multisig wallet exploitation challenge."
 ---
 
 ### 0x00. Introduction

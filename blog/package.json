@@ -34,5 +34,10 @@
     "hexo-uglify": "^2.0.0",
     "nodejieba": "^3.5.2",
     "sharp": "^0.34.3"
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^7.0.2",
+    "hexo-filter-optimize": "^0.3.1",
+    "purgecss": "^7.0.2"
   }
 }

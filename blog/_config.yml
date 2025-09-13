@@ -182,7 +182,7 @@ feed:
   content_limit: 140
   content_limit_delim: ' '
   order_by: -date
-  icon: /images/Dog.jpg
+  icon: /images/Dog.webp
   autodiscovery: true
 
 # Automatic nofollow for external links
@@ -215,6 +215,44 @@ clean_css:
     compatibility: 'ie8'
     level: 2
     inline: ['local']
+
+# CSS optimization with PurgeCSS
+optimize:
+  enable: true
+  # PurgeCSS options
+  css:
+    enable: true
+    # Remove unused CSS rules
+    purge: true
+    safelist: [
+      # Keep dynamic classes
+      /^fa-/,
+      /^fab-/,
+      /^fas-/,
+      /^far-/,
+      /^fal-/,
+      /active$/,
+      /show$/,
+      /hide$/,
+      /animated/,
+      /dark-mode/,
+      /light-mode/
+    ]
+  # Critical CSS extraction
+  critical:
+    enable: true
+    # Above-the-fold CSS patterns
+    include: [
+      'body',
+      'html',
+      '.navbar',
+      '.home-banner',
+      'h1',
+      'h2',
+      'h3',
+      '.container',
+      '.content'
+    ]
 
 uglify:
   mangle: true

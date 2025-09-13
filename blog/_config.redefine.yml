@@ -162,6 +162,11 @@ home_banner:
       zhihu:  # your ZhiHu URL
       twitter:  https://x.com/0xlouistsai
       email:  q1030176@gmail.com
+    # Social links accessibility labels
+    labels:
+      github: "Visit Louis Tsai's GitHub profile"
+      twitter: "Visit Louis Tsai's Twitter profile"
+      email: "Send email to Louis Tsai"
       # ...... # you can add more
     # Social links with QRcode drawers
     qrs:

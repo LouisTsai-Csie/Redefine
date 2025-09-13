@@ -81,8 +81,11 @@ global:
   single_page: true
   # Whether to enable Preloader.
   preloader: true
-  # Whether to enable open graph
-  open_graph: true
+  # Open Graph settings
+  open_graph:
+    enable: true
+    image: /images/preview.webp
+    description: Louis Tsai's blog on Web3 security, DeFi exploits, and smart contract analysis
   # Google Analytics
   google_analytics:
     enable: true

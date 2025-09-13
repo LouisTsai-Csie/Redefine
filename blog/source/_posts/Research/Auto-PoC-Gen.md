@@ -26,7 +26,7 @@ Developing proof-of-concepts (PoCs) for exploits is crucial for identifying root
 
 Take `NGFS` attack incident as example, you can find the postmortem and analysis in another post of mine, here we focus on the invocation flow of the exploit.
 
-![NGFS-Invocation-Flow](../../images/Research/Auto-PoC-Gen/Invocation-flow.png)
+![Transaction flow diagram showing the NGFS attack sequence from PancakeSwap getPair to reserves manipulation](../../images/Research/Auto-PoC-Gen/Invocation-flow.webp)
 
 Based on the transaction details, the attack involves the following steps:
 
@@ -39,7 +39,7 @@ Based on the transaction details, the attack involves the following steps:
 
 When compared to the ultimate proof-of-concept, the results are nearly identical.
 
-![Comparison of PoC and Invocation Flow](../../images/Research/Auto-PoC-Gen/invocation-poc-comparison.png)
+![Side-by-side comparison of transaction invocation flow and generated proof-of-concept code](../../images/Research/Auto-PoC-Gen/invocation-poc-comparison.webp)
 
 ### Proposed Solution
 
@@ -47,7 +47,7 @@ I further analyzed the implementation of these transaction tracer tools and iden
 
 The screenshot below shows a partial result of the debug_traceTransaction for the transaction hash: 0x8fc90a6c3ee3001cdcbbb685b4fbe67b1fa2bec575b15b0395fea5540d0901ae.
 
-![debug_tractTransaction](../../images/Research/Auto-PoC-Gen/debug_traceTransaction.png)
+![Debug trace output showing transaction call depth, addresses, and input data](../../images/Research/Auto-PoC-Gen/debug_traceTransaction.webp)
 
 
 At depth 0, we can see that the address `0x50...8c` initiates a `CALL` to `0x3e...85`, with the following input:
@@ -58,7 +58,7 @@ At depth 0, we can see that the address `0x50...8c` initiates a `CALL` to `0x3e.
 
 This lengthy input can be decoded using tools like `abi-decoder`. Below is the decoded result obtained using Deth Tools:
 
-![Input Decoded Result](../../images/Research/Auto-PoC-Gen/decoded-input.png)
+![Decoded transaction input showing transferToken function call with parameters](../../images/Research/Auto-PoC-Gen/decoded-input.webp)
 
 It is evident that the address `0x50...8c` invokes the `transferToken` function on the contract `0x3e...85` with specific parameters.
 
@@ -76,7 +76,7 @@ The display results can be improved in the following ways:
 
 The general workflow is illustrated in the following diagram.
 
-![PoC Generator Workflow](../../images/Research/Auto-PoC-Gen/PoC-Gen-Workflow.png)
+![Flowchart diagram illustrating the automated PoC generation process from transaction hash to Foundry test](../../images/Research/Auto-PoC-Gen/PoC-Gen-Workflow.webp)
 
 ### Obstacles
 

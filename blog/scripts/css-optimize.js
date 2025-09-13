@@ -105,26 +105,5 @@ hexo.extend.filter.register('after_generate', async function() {
   }
 });
 
-// Critical CSS extraction for above-the-fold content
-hexo.extend.filter.register('after_post_render', function(data) {
-  if (data.layout === 'index' || data.layout === 'post') {
-    // Add critical CSS hint for better loading
-    const criticalCSS = `
-    <style id="critical-css">
-      body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
-      .navbar{position:fixed;top:0;width:100%;z-index:1000;background:rgba(255,255,255,0.9);backdrop-filter:blur(10px)}
-      .home-banner{min-height:100vh;display:flex;align-items:center;justify-content:center}
-      h1,h2,h3{line-height:1.3;margin:0.5em 0}
-      .container{max-width:1200px;margin:0 auto;padding:0 1rem}
-      .content{line-height:1.6}
-      @media(max-width:768px){.container{padding:0 0.5rem}}
-    </style>
-    `;
-
-    if (!data.content.includes('critical-css')) {
-      data.content = criticalCSS + data.content;
-    }
-  }
-
-  return data;
-});
+// Note: Critical CSS is now handled in theme configuration inject.head
+// to avoid contaminating post content and preview text

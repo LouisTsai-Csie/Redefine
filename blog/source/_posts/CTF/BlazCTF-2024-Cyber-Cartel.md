@@ -32,7 +32,7 @@ function isSolved() external view returns (bool) {
 
 So, the relation among these three challenge now is as follows:
 
-![Cyber Cartel Challenge Configuration](../../images/CTF/BlazCTF-2024-Cyber-Cartel/Cyber-Cartel-Challenge-Configuration.png)
+![Architecture diagram showing the relationship between Challenge, CartelTreasury, and BodyGuard contracts](../../images/CTF/BlazCTF-2024-Cyber-Cartel/Cyber-Cartel-Challenge-Configuration.webp)
 
 ### 0x02. CartelTreasury
 

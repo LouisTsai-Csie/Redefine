@@ -102,3 +102,27 @@ theme: redefine
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
+
+# Responsive images
+responsive_images:
+  pattern: '**/*.{jpg,jpeg,png,gif}'
+  engine: 'sharp'
+  sizes:
+    small:
+      width: 320
+      quality: 85
+    medium:
+      width: 640
+      quality: 85
+    large:
+      width: 1024
+      quality: 90
+  formats:
+    webp:
+      quality: 85
+    avif:
+      quality: 75
+      effort: 4
+  # Generate original formats alongside optimized ones
+  generate_srcset: true
+  lazy_loading: true

@@ -123,22 +123,26 @@ responsive_images:
   engine: 'sharp'
   sizes:
     small:
-      width: 320
-      quality: 85
+      width: 480
+      quality: 80
     medium:
-      width: 640
+      width: 800
       quality: 85
     large:
-      width: 1024
+      width: 1200
       quality: 90
   formats:
     webp:
-      quality: 85
+      quality: 80
     avif:
-      quality: 75
-      effort: 4
+      quality: 70
+      effort: 6
   # Generate original formats alongside optimized ones
   generate_srcset: true
+  # Force WebP generation for all images
+  optimize_all: true
+  # Convert original images to WebP by default
+  default_format: 'webp'
   lazy_loading: true
 
 # Sitemap
